@@ -15,6 +15,7 @@
         <script src="media/javascripts/shCore.js"></script>
         <script src="media/javascripts/shBrushJScript.js"></script>
         <script src="media/javascripts/main.js"></script>
+        <script src="http://bevacqua.github.io/horsey/dist/horsey.js"></script>
     </head>
 
     <body>
@@ -39,26 +40,13 @@
                 <textarea class="form-control" id="textarea1" rows="4">:a</textarea>
             </div>
             <pre class="brush: js; script">
-                $('#textarea1').textcomplete([
-                    { // tech companies
-                        words: ['apple', 'google', 'facebook', 'github'],
-                        match: /\b(\w{2,})$/,
-                        search: function (term, callback) {
-                            callback($.map(this.words, function (word) {
-                                return word.indexOf(term) === 0 ? word : null;
-                            }));
-                        },
-                        index: 1,
-                        replace: function (word) {
-                            return word + '} ';
-                        }
-                    }
-                ], {
-                    onKeydown: function (e, commands) {
-                        if (e.ctrlKey &amp;&amp; e.keyCode === 74) { // CTRL-J
-                            return commands.KEY_ENTER;
-                        }
-                    }
+                horsey(document.querySelector('textarea'), {
+                  suggestions: [
+                    { value: '@michael', text: 'Michael Jackson' },
+                    { value: '@jack', text: 'Jack Johnson' },
+                    { value: '@ozzy', text: 'Ozzy Osbourne' }
+                  ],
+                  anchor: '@'
                 });
             </pre>
         </div>
