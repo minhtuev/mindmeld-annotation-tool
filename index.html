@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery.textcomplete</title>
+
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="media/stylesheets/main.css" rel="stylesheet"/>
+        <link href="media/stylesheets/shCoreDefault.css" rel="stylesheet"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://yuku-t.com/jquery-overlay/jquery.overlay.js"></script>
+        <script src="media/javascripts/jquery.textcomplete.js"></script>
+        <script src="media/javascripts/emoji.js"></script>
+        <script src="media/javascripts/shCore.js"></script>
+        <script src="media/javascripts/shBrushJScript.js"></script>
+        <script src="media/javascripts/main.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>
+                    jQuery.textcomplete
+                    <small>Autocomplete for Textarea</small>
+                </h1>
+            </div>
+
+            <a href="https://github.com/yuku-t/jquery-textcomplete" class="btn btn-default btn-large">
+                <i class="icon-github"></i>
+                Fork me on GitHub.
+            </a>
+
+            <h2>Demo</h2>
+
+            <h3 id="basic-usage">Basic Usage</h3>
+            <div class="textarea-wrapper">
+                <span class="label label-default">#textarea1</span>
+                <textarea class="form-control" id="textarea1" rows="4">:a</textarea>
+            </div>
+            <pre class="brush: js; script">
+                $('#textarea1').textcomplete([
+                    { // tech companies
+                        words: ['apple', 'google', 'facebook', 'github'],
+                        match: /\b(\w{2,})$/,
+                        search: function (term, callback) {
+                            callback($.map(this.words, function (word) {
+                                return word.indexOf(term) === 0 ? word : null;
+                            }));
+                        },
+                        index: 1,
+                        replace: function (word) {
+                            return word + '} ';
+                        }
+                    }
+                ], {
+                    onKeydown: function (e, commands) {
+                        if (e.ctrlKey &amp;&amp; e.keyCode === 74) { // CTRL-J
+                            return commands.KEY_ENTER;
+                        }
+                    }
+                });
+            </pre>
+        </div>
+    </body>
+</html>
