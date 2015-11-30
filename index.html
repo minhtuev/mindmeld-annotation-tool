@@ -1,8 +1,9 @@
 
 <!DOCTYPE html>
 <html>
+    <link href='http://bevacqua.github.io/horsey/dist/horsey.css' rel='stylesheet' type='text/css' />
     <head>
-        <title>jQuery.textcomplete</title>
+        <title>Query Annotator</title>
 
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,41 +15,50 @@
         <script src="media/javascripts/emoji.js"></script>
         <script src="media/javascripts/shCore.js"></script>
         <script src="media/javascripts/shBrushJScript.js"></script>
-        <script src="media/javascripts/main.js"></script>
         <script src="http://bevacqua.github.io/horsey/dist/horsey.js"></script>
+        <script type="text/javascript">
+            function download(filename, text) {
+              var element = document.createElement('a');
+              element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+              element.setAttribute('download', filename);
+
+              element.style.display = 'none';
+              document.body.appendChild(element);
+
+              element.click();
+
+              document.body.removeChild(element);
+            }
+        </script>
     </head>
 
     <body>
         <div class="container">
             <div class="page-header">
                 <h1>
-                    jQuery.textcomplete
-                    <small>Autocomplete for Textarea</small>
+                    Annotation Tool
+                    <small>Autocomplete for efficient annotators</small>
                 </h1>
             </div>
 
-            <a href="https://github.com/yuku-t/jquery-textcomplete" class="btn btn-default btn-large">
-                <i class="icon-github"></i>
-                Fork me on GitHub.
-            </a>
-
-            <h2>Demo</h2>
-
-            <h3 id="basic-usage">Basic Usage</h3>
+            <h3 id="basic-usage">Basic Usage: `Play {Madonna@artist}`</h3>
             <div class="textarea-wrapper">
-                <span class="label label-default">#textarea1</span>
-                <textarea class="form-control" id="textarea1" rows="4">:a</textarea>
+                <span class="label label-default">Input</span>
+                <textarea class="form-control" id="textarea1" rows="4">Play Madonna</textarea>
             </div>
-            <pre class="brush: js; script">
+            <script type="text/javascript">
                 horsey(document.querySelector('textarea'), {
                   suggestions: [
-                    { value: '@michael', text: 'Michael Jackson' },
-                    { value: '@jack', text: 'Jack Johnson' },
-                    { value: '@ozzy', text: 'Ozzy Osbourne' }
+                    { value: '@genres} ', text: 'genres' },
+                    { value: '@track}', text: 'track' },
+                    { value: '@album}', text: 'album' },
+                    { value: '@artist}', text: 'artist' },
+                    { value: '@playlist}', text: 'playlist' },
                   ],
                   anchor: '@'
                 });
-            </pre>
+            </script>
+            <input type="submit" value="Save" onclick="download('query.txt', $('#textarea1').val())">
         </div>
     </body>
 </html>
