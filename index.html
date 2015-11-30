@@ -10,9 +10,6 @@
         <link href="media/stylesheets/main.css" rel="stylesheet"/>
         <link href="media/stylesheets/shCoreDefault.css" rel="stylesheet"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://yuku-t.com/jquery-overlay/jquery.overlay.js"></script>
-        <script src="media/javascripts/jquery.textcomplete.js"></script>
-        <script src="media/javascripts/emoji.js"></script>
         <script src="media/javascripts/shCore.js"></script>
         <script src="media/javascripts/shBrushJScript.js"></script>
         <script src="http://bevacqua.github.io/horsey/dist/horsey.js"></script>
@@ -28,6 +25,11 @@
               element.click();
 
               document.body.removeChild(element);
+            }
+
+            function save() {
+                queries = $('#textarea1').val().trim().replace(/@/g, '|');
+                download('queries.txt', queries);
             }
         </script>
     </head>
@@ -54,11 +56,12 @@
                     { value: '@album}', text: 'album' },
                     { value: '@artist}', text: 'artist' },
                     { value: '@playlist}', text: 'playlist' },
+                    { value: '@type}', text: 'type' },
                   ],
                   anchor: '@'
                 });
             </script>
-            <input type="submit" value="Save" onclick="download('query.txt', $('#textarea1').val())">
+            <input type="submit" value="Save" onclick="save()">
         </div>
     </body>
 </html>
