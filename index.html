@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 <html>
-    <link href='http://bevacqua.github.io/horsey/dist/horsey.css' rel='stylesheet' type='text/css' />
     <head>
         <title>Annotation Tool [beta]</title>
 
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://bevacqua.github.io/horsey/dist/horsey.css' rel='stylesheet' type='text/css' />
         <link href="media/stylesheets/main.css" rel="stylesheet"/>
         <link href="media/stylesheets/shCoreDefault.css" rel="stylesheet"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -46,7 +46,7 @@
             <h3 id="basic-usage">Basic Usage: use '@' instead of '|', for example: `Play {Madonna@artist}`</h3>
             <div class="textarea-wrapper">
                 <span class="label label-default">Input</span>
-                <textarea class="form-control" id="textarea1" rows="4">Play Madonna</textarea>
+                <textarea class="form-control" id="textarea1" rows="15">Play Madonna</textarea>
             </div>
             <script type="text/javascript">
                 horsey(document.querySelector('textarea'), {
@@ -65,7 +65,7 @@
                   anchor: '@'
                 });
             </script>
-            <input type="submit" value="Save" onclick="save()">
+            <button onclick="save()" style="margin-top: 5px;">Save</button>
         </div>
     </body>
 </html>
