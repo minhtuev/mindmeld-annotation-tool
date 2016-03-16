@@ -7,12 +7,13 @@
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href='http://bevacqua.github.io/horsey/dist/horsey.css' rel='stylesheet' type='text/css' />
-        <link href="media/stylesheets/main.css" rel="stylesheet"/>
-        <link href="media/stylesheets/shCoreDefault.css" rel="stylesheet"/>
+        <link href="stylesheets/main.css" rel="stylesheet"/>
+        <link href="stylesheets/shCoreDefault.css" rel="stylesheet"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="media/javascripts/shCore.js"></script>
-        <script src="media/javascripts/shBrushJScript.js"></script>
+        <script src="javascripts/shCore.js"></script>
+        <script src="javascripts/shBrushJScript.js"></script>
         <script src="http://bevacqua.github.io/horsey/dist/horsey.js"></script>
+        <script src="javascripts/main.js"></script>
         <script type="text/javascript">
             function download(filename, text) {
               var element = document.createElement('a');
@@ -41,6 +42,27 @@
                     Annotation Tool [beta]
                     <small>Autocomplete for facets</small>
                 </h1>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label for="parser_select">Select Parser</label>
+                        <select class="form-control" id="parser_select">
+                            <% for(var i=0; i<parsers.length; i++) { %>
+                                <option>
+                                    <%= parsers[i].parser_name %>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        &nbsp&nbsp&nbsp&nbsp<span><b>Upload Raw Query Files</b></span>
+                    </div>
+                    <div class="form-group">
+                        <input id="file_input" type="file" multiple>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" onclick="upload_query_files(event)" id="upload_btn">Upload</button>
+                    </div>
+                </form>
             </div>
 
             <h3 id="basic-usage">Basic Usage: use '@' instead of '|', for example: `Play {Madonna@artist}`</h3>

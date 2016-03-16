@@ -1,0 +1,20 @@
+{
+    "parsers" : [
+        {
+            "parser_name": "music-assistant",
+            "parse_url": "http://dev-delorean-000.dev/music-assistant/parse"
+        },
+        {
+            "parser_name": "product-discovery",
+            "parse_url": "http://dev-demo-000.dev/product-discovery/parse"
+        },
+        {
+            "parser_name": "tv-demo",
+            "parse_url": "http://dev-demo-000.dev/tv-demo/parse"
+        },
+        {
+            "parser_name": "barista",
+            "parse_url": "http://dev-demo-000.dev/barista/parse"
+        }
+    ]
+}
