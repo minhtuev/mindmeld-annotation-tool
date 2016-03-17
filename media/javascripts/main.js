@@ -78,4 +78,42 @@ function upload_query_files(event) {
           // STOP LOADING SPINNER
       }
   });
-}
+};
+
+
+function bootstrap() {
+  console.log('iiiii');
+  var parser = $("#parser_select option:selected").text();
+  parser = parser.replace(/^\s+|\s+$/g,'');
+  $("#btsp_btn").html('Parsing...');
+  var editor = $("#editor");
+  var data = editor.val();
+  var queries = data.split("\n");
+  for (var i = 0; i < queries.length; i++) {
+    queries[i] = queries[i].trim();
+  }
+  $.ajax({
+      url: "/parse",
+      type: "POST",
+      contentType: 'application/json',
+      data: JSON.stringify({
+          "queries": queries,
+          "parser": parser
+      }),
+      success: function(data) {
+          // replace raw queries with parsed queries
+          var response = JSON.parse(data);
+          var queries = JSON.parse(response['queries']);
+          $("#editor").val('');
+          for (var i = 0; i < queries.length; i++) {
+              editor.val(editor.val() + queries[i]['parsed_query'] + '\n');
+          }
+          $("#btsp_btn").html('Bootstrap');
+      },
+      error: function(data) {
+          // IS_BUSY = false;
+          alert('Parsing Error.');
+          $("#btsp_btn").html('Bootstrap');
+      }
+  });
+};

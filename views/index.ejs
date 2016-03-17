@@ -68,7 +68,7 @@
             <h3 id="basic-usage">Basic Usage: use '@' instead of '|', for example: `Play {Madonna@artist}`</h3>
             <div class="textarea-wrapper">
                 <span class="label label-default">Input</span>
-                <textarea class="form-control" id="textarea1" rows="15">Play Madonna</textarea>
+                <textarea class="form-control" id="editor" rows="15">Play Madonna</textarea>
             </div>
             <script type="text/javascript">
                 horsey(document.querySelector('textarea'), {
@@ -87,7 +87,8 @@
                   anchor: '@'
                 });
             </script>
-            <button onclick="save()" style="margin-top: 5px;">Save</button>
+            <button id="btsp_btn" onclick="bootstrap()" style="margin-top: 5px;">Bootstrap</button>
+            <button id="sv_btn" onclick="save()" style="margin-top: 5px;">Save</button>
         </div>
     </body>
 </html>

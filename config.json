@@ -1,10 +1,6 @@
 {
     "parsers" : [
         {
-            "parser_name": "music-assistant",
-            "parse_url": "http://dev-delorean-000.dev/music-assistant/parse"
-        },
-        {
             "parser_name": "product-discovery",
             "parse_url": "http://dev-demo-000.dev/product-discovery/parse"
         },
