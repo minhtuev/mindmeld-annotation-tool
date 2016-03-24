@@ -1,0 +1,14 @@
+{
+  "name": "annotator",
+  "description": "MM annotation tool",
+  "version": "0.0.0",
+  "dependencies": {
+    "express": ">= 4.13.0",
+    "ejs": ">= 2.4.1",
+    "fs": ">= 0.0.2",
+    "multer": ">= 1.1.0",
+    "body-parser": ">= 1.15.0",
+    "async": ">=1.5.2"
+  },
+  "engine": "node 0.12.7"
+}
